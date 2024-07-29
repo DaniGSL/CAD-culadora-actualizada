@@ -104,5 +104,56 @@ document.addEventListener('DOMContentLoaded', function() {
         resultadosSection.innerHTML = resultado;
     }
 
-    // ... (rest of the functions remain the same)
+    function calcularVolumenInicial(peso, shock) {
+        return shock === 'si' ? peso * 20 : peso * 10;
+    }
+
+    function calcularMantenimientoDiario(peso) {
+        if (peso <= 10) {
+            return peso * 100;
+        } else if (peso <= 20) {
+            return 1000 + (peso - 10) * 50;
+        } else {
+            return 1500 + (peso - 20) * 20;
+        }
+    }
+
+    function calcularDeficitHidrico(peso, deshidratacion) {
+        return peso * deshidratacion * 10;
+    }
+
+    function calcularVolumenTotal24Horas(mantenimientoDiario, deficitEn24Horas, volumenInicial) {
+        let volumenTotal = mantenimientoDiario + deficitEn24Horas - volumenInicial;
+        let maximoPermitido = mantenimientoDiario * 2 - volumenInicial;
+        return Math.max(0, Math.min(volumenTotal, maximoPermitido));
+    }
+
+    function calcularDosisInsulina(peso) {
+        return peso * 0.1;
+    }
+
+    function calcularDosisTotalDiariaInsulina(edad, peso) {
+        if (edad < 5) {
+            return peso * 0.5;
+        } else if (edad > 10) {
+            return peso * 1;
+        } else {
+            return peso * 0.75;
+        }
+    }
+
+    function calcularDistribucionInsulina(dosisTotalDiaria) {
+        const mitad = dosisTotalDiaria / 2;
+        return {
+            basal: mitad,
+            desayuno: mitad * 0.30,
+            almuerzo: mitad * 0.25,
+            merienda: mitad * 0.20,
+            cena: mitad * 0.25
+        };
+    }
+
+    function calcularIndiceSensibilidad(dosisTotalDiaria) {
+        return 1800 / dosisTotalDiaria;
+    }
 });
