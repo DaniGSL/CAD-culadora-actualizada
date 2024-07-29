@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAD-culadora: Tratamiento para Debut Diabético con CAD en Pediatría</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 style="font-size: 2.5em;">CAD-culadora</h1>
+        <p>Calculadora de Tratamiento para Debut Diabético con CAD en Pediatría</p>
+        <p>Autoría: P. Daniel G. Seco de Lucena</p>
+    </header>
+
+    <main>
+        <section id="informacion-adicional">
+            <h2>Información Adicional</h2>
+            <details>
+                <summary>Pruebas a solicitar y Valoración</summary>
+                <h3>Pruebas a solicitar:</h3>
+                <p>Glucemia y cetonemia, Gasometría venosa, Hemograma: Puede haber leucocitosis y neutrofilia. Bioquímica: Glucosa, BUN, Creatinina, urea, Na, K, P, Ca, Mg, Proteínas totales y osmolalidad.</p>
+                <h3>Valoración de cetonemia:</h3>
+                <ul>
+                    <li><= 0,5 mmol/L Normal</li>
+                    <li>0,6 - 1 mmol/L cetosis establecida</li>
+                    <li>> 3 mmol/L riesgo de cetoacidosis</li>
+                </ul>
+                <h3>Clasificación de la CAD:</h3>
+                <ul>
+                    <li><strong>Leve:</strong> pH < 7.3, Bicarbonato < 15 mmol/L</li>
+                    <li><strong>Moderada:</strong> pH < 7.2, Bicarbonato < 10 mmol/L</li>
+                    <li><strong>Severa:</strong> pH < 7.1, Bicarbonato < 5 mmol/L</li>
+                </ul>
+            </details>
+            <details>
+                <summary>Criterios de Derivación a UMI</summary>
+                <ul>
+                    <li>CAD severa (pH<7,1 o HCO3 <5)</li>
+                    <li>Edad menor de 5 años</li>
+                    <li>Sospecha de edema cerebral</li>
+                </ul>
+                <h3>Síntomas de alarma</h3>
+                <ul>
+                    <li>Cefalea o bradicardia</li>
+                    <li>Cambios en estado NRL o exploración NRL patológica (ojo a pares craneales)</li>
+                    <li>Aumento de TA o disminución de SatO2</li>
+                    <li>Convulsiones, papiledema, PCR...</li>
+                </ul>
+                <h3>Tratamiento de edema cerebral</h3>
+                <ul>
+                    <li>Manitol 0,5-1 g/kg en 20 min (Si no respuesta, repetir en 30 min)</li>
+                    <li>Otra opción: Suero salino hipertónico (3%): 5 cc/kg en 30 minutos</li>
+                    <li>Disminuir infusión de liquidos en 1/3.</li>
+                </ul>
+            </details>
+            <details>
+                <summary>Sueros</summary>
+                <p><strong>Suero Salino Fisiológico (0,9%):</strong> Suero inicial. Tras 4-6 horas valorar cambiar a suero con tonicidad no inferior al 0,45%.</p>
+                <p><strong>Si Glucemia &lt;250-300 mg/dL o disminuye >90-100 mg/h:</strong> Añadir glucosa al 5% al suero previo o usar nuevo suero con glucosa al 5% (glucosalino 1/3 o 1/2)</p>
+                <p><strong>Si glucemia sigue disminuyendo rápidamente:</strong> Incrementar aportes de glucosa hasta el 10%.</p>
+                <p><strong>Si sigue disminuyendo >90 mg/h:</strong> Disminuir ritmo de insulina a 0.05 U/kg/h (no parar bomba)</p>
+            </details>
+            <details>
+                <summary>Preparación de bomba de insulina</summary>
+                <p>En 100 ml de SSF: Poner tantas unidades de insulina como kg de peso. Pasar a 10 cc/h (si lo pasamos a este ritmo queda a 0,1 UI/kg/h)</p>
+            </details>
+        </section>
+
+        <section id="informacion-importante">
+            <h2>Información importante antes de su uso:</h2>
+            <p>Los cálculos recomendados por la aplicación no sustituyen el juicio clínico, constituye una herramienta más para facilitar la atención de estos pacientes pero siempre habrá que adaptarse a cada caso particular.</p>
+            <p>Última actualización: Febrero 2021</p>
+        </section>
+
+        <section id="instrucciones">
+            <h2>Instrucciones para su uso:</h2>
+            <ul>
+                <li>Complete todos los campos con la información del paciente.</li>
+                <li>Asegúrese de respetar las unidades indicadas en cada campo.</li>
+                <li>Una vez ingresados todos los datos, haga clic en "Calcular" para obtener los resultados.</li>
+            </ul>
+        </section>
+
+        <section id="calculadora">
+            <h2>Datos del paciente</h2>
+            <form id="datos-paciente">
+                <label for="edad">Edad (años):</label>
+                <input type="number" id="edad" name="edad" required min="0" max="18">
+
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" name="peso" step="0.1" required min="0">
+
+                <label for="deshidratacion">Grado calculado de deshidratación (%):</label>
+                <input type="number" id="deshidratacion" name="deshidratacion" step="0.1" required min="0" max="15">
+
+                <label for="glucemia">Glucemia analítica (mg/dL):</label>
+                <input type="number" id="glucemia" name="glucemia" required min="0">
+
+                <label for="sodio">Sodio analítico (mmol/L):</label>
+                <input type="number" id="sodio" name="sodio" step="0.1" required min="100" max="200">
+
+                <label for="shock">¿Shock?</label>
+                <select id="shock" name="shock" required>
+                    <option value="no">No</option>
+                    <option value="si">Sí</option>
+                </select>
+
+                <button type="submit">Calcular</button>
+            </form>
+        </section>
+
+        <section id="resultados">
+            <h2>Resultados del tratamiento</h2>
+            <!-- Los resultados se mostrarán aquí dinámicamente -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CAD-culadora. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
